@@ -1,0 +1,54 @@
+.slick-prev:before {
+    font-size: 50px !important;
+}
+
+.slick-prev {
+    left: 0 !important;
+    z-index: 9;
+}
+
+.slick-next:before {
+    font-size: 50px !important;
+}
+
+.slick-next {
+    right: 30px !important;
+    z-index: 9;
+}
+
+.slick-slide:focus {
+    outline: none;
+}
+
+.slick-slide div:focus {
+    outline: none;
+}
+
+img:focus {
+    outline: none;
+}
+
+@media (max-width: 767px) {
+
+    .slick-prev:before {
+        font-size: 20px !important;
+    }
+
+    .slick-next:before {
+        font-size: 20px !important;
+    }
+
+    .slick-next {
+        right: 0 !important;
+        z-index: 9;
+    }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
