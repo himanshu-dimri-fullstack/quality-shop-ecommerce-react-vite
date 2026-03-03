@@ -4,7 +4,7 @@ import NavbarBelt from './Navbarbelt'
 
 const Navbar = () => {
     return (
-        <div className='px-6 xl:px-12 xl:container xl:mx-auto'>
+        <div className='container mx-auto px-6 lg:px-12'>
             <NavbarBanner />
             <NavbarBelt />
         </div>

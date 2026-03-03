@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
             </div>
             <div className='flex flex-col p-4'>
                 <span className='text-sm text-black whitespace-nowrap'>{product.title}</span>
-                <span className='text-sm text-black font-semibold whitespace-nowrap pt-1'>₹{product.price}</span>
+                <span className='text-sm text-black font-bold whitespace-nowrap pt-1'>₹{product.price}</span>
             </div>
         </div>
     )
