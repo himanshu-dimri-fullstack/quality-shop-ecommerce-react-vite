@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import ProductCard from "../components/ProductCard";
 
 const ProductPage = () => {
@@ -8,7 +8,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await fetch(`http://localhost:3000/${slug}`);
+            const res = await fetch(`http://localhost:3000/products?subSlug=${slug}`);
             const data = await res.json();
             setProducts(data);
         }
@@ -22,9 +22,9 @@ const ProductPage = () => {
                 {
                     products.map((product) => {
                         return (
-                            <div key={product.id} className="col-span-6 md:col-span-3 lg:col-span-2 pb-2 pr-2">
+                            <Link to={`/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-3 lg:col-span-2 pb-2 pr-2">
                                 <ProductCard product={product} />
-                            </div>
+                            </Link>
                         )
                     })
                 }

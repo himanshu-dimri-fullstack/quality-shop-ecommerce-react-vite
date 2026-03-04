@@ -8,24 +8,24 @@ import { Link } from "react-router-dom"
 
 const Homepage = () => {
 
-    const [mobiles, SetMobiles] = useState([]);
-    const [watches, SetWatches] = useState([]);
+    const [mobiles, setMobiles] = useState([]);
+    const [watches, setWatches] = useState([]);
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await fetch("http://localhost:3000/mobiles");
+            const res = await fetch("http://localhost:3000/products?subcategoryId=1");
             const data = await res.json();
-            console.log(data);
-            SetMobiles(data);
+            // console.log(data);
+            setMobiles(data);
         }
         fetchProducts();
     }, [])
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await fetch("http://localhost:3000/watches");
+            const res = await fetch("http://localhost:3000/products?subcategoryId=2");
             const data = await res.json();
-            console.log(data);
-            SetWatches(data);
+            // console.log(data);
+            setWatches(data);
         }
         fetchProducts();
     }, [])
@@ -74,7 +74,7 @@ const Homepage = () => {
             <div className="">
                 <div className="flex justify-between py-2 md:py-5">
                     <h3 className="text-lg md:text-2xl text-black font-bold">Suggested for you</h3>
-                    <Link to={"/watches"} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
+                    <Link to={"/wrist-watches"} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
                         <ArrowRight size={18} className="text-white" />
                     </Link>
                 </div>
