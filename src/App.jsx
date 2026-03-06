@@ -5,12 +5,14 @@ import Homepage from './pages/Homepage'
 import { Route, Routes } from 'react-router-dom'
 import ProductPage from './pages/ProductPage'
 import ProductDetailPage from './pages/ProductDetailPage'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
 
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/:slug" element={<ProductPage />} />

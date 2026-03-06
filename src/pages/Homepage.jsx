@@ -15,7 +15,6 @@ const Homepage = () => {
         const fetchProducts = async () => {
             const res = await fetch("http://localhost:3000/products?subcategoryId=1");
             const data = await res.json();
-            // console.log(data);
             setMobiles(data);
         }
         fetchProducts();
@@ -24,7 +23,6 @@ const Homepage = () => {
         const fetchProducts = async () => {
             const res = await fetch("http://localhost:3000/products?subcategoryId=2");
             const data = await res.json();
-            // console.log(data);
             setWatches(data);
         }
         fetchProducts();
@@ -64,9 +62,9 @@ const Homepage = () => {
                         {
                             mobiles.slice(0, 6).map((product) => {
                                 return (
-                                    <div key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
+                                    <Link to={`/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
                                         <ProductCard product={product} />
-                                    </div>
+                                    </Link>
                                 )
                             })
                         }
@@ -84,9 +82,9 @@ const Homepage = () => {
                         {
                             watches.slice(0, 6).map((product) => {
                                 return (
-                                    <div key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
+                                    <Link to={`/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
                                         <ProductCard product={product} />
-                                    </div>
+                                    </Link>
                                 )
                             })
                         }

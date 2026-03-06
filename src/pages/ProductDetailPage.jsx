@@ -9,6 +9,7 @@ const ProductDetailPage = () => {
 
     const { slug } = useParams();
 
+    const [loading, setLoading] = useState(true);
     const [subCat, setSubCat] = useState(null);
     const [product, setProduct] = useState(null);
     const [products, setProducts] = useState([]);
@@ -30,14 +31,21 @@ const ProductDetailPage = () => {
             catch (err) {
                 console.log(err.message);
             }
+            finally {
+                setLoading(false);
+            }
         }
         fetchProduct();
     }, [slug]);
 
-    const finalPrice = product?.price - product?.price * (product?.discount / 100);
+    const finalPrice = product?.discount ? product?.price - product?.price * (product?.discount / 100) : product?.price;
 
-    if (!product || !subCat) {
-        return <div>Loading...</div>
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen ">
+                <div className="w-10 h-10 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+            </div>
+        )
     }
     return (
         <div className="bg-[#f1f3f6]  border-t border-solid border-[#ccc]">
@@ -88,8 +96,14 @@ const ProductDetailPage = () => {
                                     <span className="text-sm text-black">{product.reviews}</span>
                                 </div>
                                 <div className="mt-2">
-                                    <span className="text-2xl line-through text-[#707070] pr-4">{product.price}</span>
-                                    <span className="text-2xl text-black font-bold">₹{parseInt(finalPrice)}</span>
+                                    {
+                                        (product?.discount) ?
+                                            <>
+                                                <span className="text-2xl line-through text-[#707070] pr-4">{product.price}</span>
+                                                <span className="text-2xl text-black font-bold">₹{parseInt(finalPrice)}</span>
+                                            </>
+                                            : <span className="text-2xl text-black font-bold">₹{parseInt(finalPrice)}</span>
+                                    }
                                 </div>
                             </div>
                             <div>
@@ -126,15 +140,14 @@ const ProductDetailPage = () => {
                         {
                             products.splice(0, 6).map((product, index) => {
                                 return (
-                                    <div className="col-span-6 md:col-span-4 lg:col-span-2 pr-2" key={index}>
+                                    <Link to={`/${product.subSlug}/${product.slug}`} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2" key={index}>
                                         <ProductCard product={product} />
-                                    </div>
+                                    </Link>
                                 )
                             })
                         }
                     </div>
                 </div>
-
             </div>
         </div>
 

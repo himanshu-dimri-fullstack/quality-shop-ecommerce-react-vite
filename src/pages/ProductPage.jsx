@@ -5,15 +5,33 @@ import ProductCard from "../components/ProductCard";
 const ProductPage = () => {
     const { slug } = useParams();
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await fetch(`http://localhost:3000/products?subSlug=${slug}`);
-            const data = await res.json();
-            setProducts(data);
+            try {
+                const res = await fetch(`http://localhost:3000/products?subSlug=${slug}`);
+                const data = await res.json();
+                setProducts(data);
+            }
+            catch (err) {
+                console.log(err.message)
+            }
+            finally {
+                setLoading(false);
+            }
+
         }
         fetchProducts();
     }, [])
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen ">
+                <div className="w-10 h-10 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="container mx-auto px-6 lg:px-12">
