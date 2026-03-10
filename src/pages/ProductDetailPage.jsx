@@ -1,13 +1,17 @@
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
 import ProductCard from "../components/ProductCard";
 import { ArrowRight } from "lucide-react"
+import { CartContext } from "../context/CartContext";
 
 const ProductDetailPage = () => {
 
     const { slug } = useParams();
+    const navigate = useNavigate();
+
+    const { cart, addToCart } = useContext(CartContext);
 
     const [loading, setLoading] = useState(true);
     const [subCat, setSubCat] = useState(null);
@@ -39,6 +43,9 @@ const ProductDetailPage = () => {
     }, [slug]);
 
     const finalPrice = product?.discount ? product?.price - product?.price * (product?.discount / 100) : product?.price;
+
+    const isInCart = cart.some((item) => item.product.id === product?.id);
+    // console.log(isInCart);
 
     if (loading) {
         return (
@@ -125,7 +132,12 @@ const ProductDetailPage = () => {
                                 </div>
                             </div>
                             <div className="flex gap-4 my-3">
-                                <Button className="text-md text-black  font-semibold px-4 lg:px-8 py-3 border border-[#ffe51fff] rounded-xl bg-[#ffe51fff]">Add to Cart</Button>
+                                {
+                                    isInCart ?
+                                        <Button onClick={() => navigate("/cart")} className="text-md text-black  font-semibold px-4 lg:px-8 py-3 border border-[#707070] rounded-xl bg-white">View Cart</Button>
+                                        :
+                                        <Button onClick={() => { addToCart(product) }} className="text-md text-black  font-semibold px-4 lg:px-8 py-3 border border-[#ffe51fff] rounded-xl bg-[#ffe51fff]">Add to Cart</Button>
+                                }
                                 <Button className="text-md text-black font-semibold px-4 lg:px-8 py-3 border border-[#707070] rounded-xl bg-white">Buy Now</Button>
                             </div>
                         </div>
@@ -138,7 +150,7 @@ const ProductDetailPage = () => {
                     </div>
                     <div className="grid grid-cols-12 pb-3">
                         {
-                            products.splice(0, 6).map((product, index) => {
+                            products.slice(0, 6).map((product, index) => {
                                 return (
                                     <Link to={`/${product.subSlug}/${product.slug}`} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2" key={index}>
                                         <ProductCard product={product} />

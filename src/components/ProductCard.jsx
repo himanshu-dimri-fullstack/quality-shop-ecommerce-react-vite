@@ -1,5 +1,3 @@
-
-
 const ProductCard = ({ product }) => {
     const finalPrice = product?.discount ? product?.price - product?.price * (product?.discount / 100) : product?.price;
 
@@ -12,7 +10,7 @@ const ProductCard = ({ product }) => {
                 <span className='text-sm text-black'>{(product.title).slice(0, 20) + "..."}</span>
                 <div className="flex gap-2  pt-1">
                     {
-                        product?.discount ?
+                        product.discount ?
                             <>
                                 <span className='text-md text-black font-bold'>₹{parseInt(finalPrice)}</span>
                                 <span className="text-md line-through text-[#707070] font-semibold">₹{product.price}</span>

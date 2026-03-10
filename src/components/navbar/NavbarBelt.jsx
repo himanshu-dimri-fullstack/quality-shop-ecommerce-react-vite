@@ -1,6 +1,10 @@
 import { ArrowBigDownDash, ArrowDown, ChevronDown, ShoppingCart, User } from "lucide-react"
+import { CartContext } from "../../context/CartContext"
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const NavbarBelt = () => {
+    const { cart } = useContext(CartContext);
     return (
         <div className="grid grid-cols-12 gap-3 pt-1 pb-3 md:py-3">
             <div className="col-span-12 md:col-span-7 xl:col-span-9">
@@ -17,10 +21,16 @@ const NavbarBelt = () => {
                         <span className="text-black text-sm">More</span>
                         <ChevronDown size={18} />
                     </div>
-                    <div className="flex gap-2">
+                    <Link to={"/cart"} className="flex gap-2">
                         <ShoppingCart size={18} />
                         <span className="text-black text-sm">Cart</span>
-                    </div>
+                        {
+                            cart.length > 0 ?
+                                <span className="text-black text-sm">{cart.length}</span>
+                                :
+                                <></>
+                        }
+                    </Link>
                 </div>
             </div>
         </div>
