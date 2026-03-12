@@ -7,6 +7,8 @@ import ProductPage from './pages/ProductPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import ScrollToTop from './components/ScrollToTop'
 import Cart from './pages/Cart'
+import CheckoutPage from './pages/Checkout'
+import OrderSuccess from './pages/OrderSuccess'
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         <Route path="/:slug" element={<ProductPage />} />
         <Route path="/:catSlug/:slug" element={<ProductDetailPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
       </Routes>
       <Footer />
     </>

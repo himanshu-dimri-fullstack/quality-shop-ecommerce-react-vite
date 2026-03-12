@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const NavbarBelt = () => {
+
     const { cart } = useContext(CartContext);
     return (
         <div className="grid grid-cols-12 gap-3 pt-1 pb-3 md:py-3">

@@ -98,7 +98,7 @@ const ProductDetailPage = () => {
                                 </div>
                                 <div className="flex justify-center items-center gap-1 w-30 h-10 border border-[#eee] bg-[#eee] rounded-xl mt-2">
                                     <span className="text-sm text-black font-semibold ">{product.rating}</span>
-                                    <span><Star size={14} strikeStroke={2} className="text-green-600" /></span>
+                                    <span><Star size={14} className="text-green-600" /></span>
                                     <span className="text-sm text-black font-semibold ">|</span>
                                     <span className="text-sm text-black">{product.reviews}</span>
                                 </div>
