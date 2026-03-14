@@ -54,7 +54,7 @@ const Homepage = () => {
                 <div className="">
                     <div className="flex justify-between py-2 md:py-5">
                         <h3 className="text-lg md:text-2xl text-black font-bold">Suggested for you</h3>
-                        <Link to={"/mobiles"} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
+                        <Link to={"/product/mobiles"} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
                             <ArrowRight size={18} className="text-white" />
                         </Link>
                     </div>
@@ -62,7 +62,7 @@ const Homepage = () => {
                         {
                             mobiles.slice(0, 6).map((product) => {
                                 return (
-                                    <Link to={`/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
+                                    <Link to={`/category/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
                                         <ProductCard product={product} />
                                     </Link>
                                 )
@@ -74,7 +74,7 @@ const Homepage = () => {
                 <div className="">
                     <div className="flex justify-between py-2 md:py-5">
                         <h3 className="text-lg md:text-2xl text-black font-bold">Suggested for you</h3>
-                        <Link to={"/wrist-watches"} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
+                        <Link to={"/product/wrist-watches"} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
                             <ArrowRight size={18} className="text-white" />
                         </Link>
                     </div>
@@ -82,7 +82,7 @@ const Homepage = () => {
                         {
                             watches.slice(0, 6).map((product) => {
                                 return (
-                                    <Link to={`/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
+                                    <Link to={`/category/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2">
                                         <ProductCard product={product} />
                                     </Link>
                                 )

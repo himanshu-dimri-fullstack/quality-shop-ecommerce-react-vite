@@ -50,7 +50,7 @@ const ProductDetailPage = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen ">
-                <div className="w-10 h-10 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+                <div className="w-10 h-10 border-4 border-gray-300 border-t-[#ffe51f] rounded-full animate-spin"></div>
             </div>
         )
     }
@@ -152,7 +152,7 @@ const ProductDetailPage = () => {
                         {
                             products.slice(0, 6).map((product, index) => {
                                 return (
-                                    <Link to={`/${product.subSlug}/${product.slug}`} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2" key={index}>
+                                    <Link to={`/category/${product.subSlug}/${product.slug}`} className="col-span-6 md:col-span-4 lg:col-span-2 pr-2" key={index}>
                                         <ProductCard product={product} />
                                     </Link>
                                 )

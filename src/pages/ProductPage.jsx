@@ -28,7 +28,7 @@ const ProductPage = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen ">
-                <div className="w-10 h-10 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+                <div className="w-10 h-10 border-4 border-gray-300 border-t-[#ffe51f] rounded-full animate-spin"></div>
             </div>
         );
     }
@@ -42,7 +42,7 @@ const ProductPage = () => {
                     {
                         products.map((product) => {
                             return (
-                                <Link to={`/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-3 lg:col-span-2 pb-2 pr-2">
+                                <Link to={`/category/${product.subSlug}/${product.slug}`} key={product.id} className="col-span-6 md:col-span-3 lg:col-span-2 pb-2 pr-2">
                                     <ProductCard product={product} />
                                 </Link>
                             )
