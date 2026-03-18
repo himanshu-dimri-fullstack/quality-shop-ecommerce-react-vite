@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarBanner from './NavbarBanner'
-import NavbarBelt from './Navbarbelt'
+import NavbarBelt from './NavbarBelt'
 
 const Navbar = () => {
     return (
