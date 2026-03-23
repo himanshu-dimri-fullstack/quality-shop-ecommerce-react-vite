@@ -1,16 +1,65 @@
-# React + Vite
+# Flipkart Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack eCommerce web application built using React (Vite) with a mock backend powered by json-server.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Responsive UI built with React (Vite) and Tailwind CSS
+- Built and consumed REST APIs using json-server (mock backend)  
+- Dynamic product detail pages using React Router params and API-driven data  
+- Add to Cart functionality using React Context API for global state management  
+- User authentication (Login/Signup) using json-server (mock API) and Context API  
+- Product data fetching and rendering from backend APIs  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Frontend
+- React.js (Vite)  
+- Tailwind CSS   
+
+## Backend (Mock)
+- json-server  
+
+---
+
+## Live Demo
+
+👉 https://flipkart-clone-in-react-vite.vercel.app  
+⚠️ Note: Backend is hosted on Render (free tier), so initial request may take a few seconds due to cold start.
+
+---
+
+## Repository
+
+👉 https://github.com/himanshu-dimri-fullstack/flipkart-clone-in-react  
+
+---
+
+## Installation & Setup
+
+```bash
+git clone https://github.com/himanshu-dimri-fullstack/flipkart-clone-in-react
+cd flipkart-clone-in-react
+npm install
+npm run dev
+```
+
+---
+
+## Note
+
+This project uses json-server as a mock backend. It does not include a real production backend.
+
+---
+
+## Future Improvements
+
+- Integrate real backend (Node.js + MongoDB)  
+- Add payment gateway  
+- Improve authentication with JWT  
+
+---
