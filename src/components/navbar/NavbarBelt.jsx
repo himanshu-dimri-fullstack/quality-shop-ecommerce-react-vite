@@ -5,6 +5,7 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const NavbarBelt = () => {
+
     const { user, logoutUser } = useContext(AuthContext);
     const { cart } = useContext(CartContext);
 

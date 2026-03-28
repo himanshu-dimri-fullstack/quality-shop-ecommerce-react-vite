@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import ProductCard from "../components/ProductCard";
 import { ArrowRight } from "lucide-react"
 import { CartContext } from "../context/CartContext";
+import { getProducts, getProductBySlug, getSubcategoryById } from "../api/api.js"
 
 const ProductDetailPage = () => {
 
@@ -21,16 +22,15 @@ const ProductDetailPage = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const res = await fetch(`https://flipkart-server-kohl.vercel.app/api/products?slug=${slug}`);
-                const data = await res.json();
-                const subCategoryId = data[0].subcategoryId;
-                const subCat = await fetch(`https://flipkart-server-kohl.vercel.app/api/subcategories/${subCategoryId}`);
-                const subCatData = await subCat.json();
+                const data = await getProductBySlug(slug);
+                setProduct(data);
+
+                const subCategoryId = data.subcategoryId;
+
+                const subCatData = await getSubcategoryById(subCategoryId)
                 setSubCat(subCatData);
 
-                setProduct(data[0]);
-                const productsRes = await fetch(`https://flipkart-server-kohl.vercel.app/api/products?subcategoryId=${subCatData.id}`);
-                const productsData = await productsRes.json();
+                const productsData = await getProducts(subCatData.id)
                 setProducts(productsData);
             }
             catch (err) {
@@ -43,11 +43,11 @@ const ProductDetailPage = () => {
         fetchProduct();
     }, [slug]);
 
-    // console.log(subCat);
+    console.log({ "cart": cart });
 
     const finalPrice = product?.discount ? product?.price - product?.price * (product?.discount / 100) : product?.price;
 
-    const isInCart = cart.some((item) => item.product.id === product?.id);
+    const isInCart = cart.some((item) => item.id === product?.id);
 
     if (loading) {
         return (
@@ -63,9 +63,9 @@ const ProductDetailPage = () => {
                     <div className="py-2">
                         <span className="text-sm text-[#707070ff] font-semibold pr-1"><Link>Home</Link></span>
                         <span className="text-sm text-[#707070ff] font-semibold pr-1">/</span>
-                        <span className="text-sm text-[#707070ff] font-semibold pr-1"><Link>{subCat.name}</Link></span>
+                        <span className="text-sm text-[#707070ff] font-semibold pr-1"><Link>{subCat?.name}</Link></span>
                         <span className="text-sm text-[#707070ff] font-semibold pr-1">/</span>
-                        <span className="text-sm text-[#707070ff] font-semibold pr-1"><Link>{product.title}</Link></span>
+                        <span className="text-sm text-[#707070ff] font-semibold pr-1"><Link>{product?.title}</Link></span>
                     </div>
                     <div className="grid grid-cols-12 my-2">
                         <div className="col-span-12 md:col-span-7">

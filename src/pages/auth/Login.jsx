@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import Button from "../../components/Button";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { userLogin } from "../../api/api.js"
 
 const Login = () => {
-    // const navigate = useNavigate();
-    const { loginUser, setUser } = useContext(AuthContext);
+
+    const { loginUser } = useContext(AuthContext);
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -21,9 +21,9 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        const trimmedEmail = formData.email.trim();
         try {
-            const res = await fetch(`https://flipkart-server-kohl.vercel.app/api/users?email=${formData.email}`);
-            const newUser = await res.json();
+            const newUser = await userLogin(trimmedEmail)
 
             if (newUser.length === 0) {
                 setErrorMessage("User not found")

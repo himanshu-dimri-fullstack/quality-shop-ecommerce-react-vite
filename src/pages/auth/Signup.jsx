@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/AuthContext";
 import Button from "../../components/Button";
+import { userLogin, signupUser } from "../../api/api.js"
 
 const Signup = () => {
 
@@ -35,31 +36,20 @@ const Signup = () => {
         try {
             const trimmedEmail = formData.email.trim();
 
-            const checkRes = await fetch(`https://flipkart-server-kohl.vercel.app/api/users?email=${trimmedEmail}`);
-            if (!checkRes.ok) throw new Error("Server check failed");
+            const userData = await userLogin(trimmedEmail)
 
-            const existingUsers = await checkRes.json();
-            if (existingUsers.length > 0) {
+            if (userData.length > 0) {
                 setErrorMessage("Email already present");
                 return;
             }
 
-            const response = await fetch("https://flipkart-server-kohl.vercel.app/api/users", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: trimmedEmail,
-                    password: formData.password
-                })
+            const newUser = await signupUser({
+                name: formData.name,
+                email: trimmedEmail,
+                password: formData.password
             });
 
-            if (response.ok) {
-                const newUser = await response.json();
-                loginUser(newUser);
-            } else {
-                throw new Error("Failed to create account");
-            }
+            loginUser(newUser);
 
         } catch (error) {
             console.error("Signup Error:", error);

@@ -12,14 +12,14 @@ const Cart = () => {
 
     const totalPrice = cart.reduce((acc, item) => {
 
-        const finalPrice = item.product.discount
-            ? item.product.price - item.product.price * item.product.discount / 100
-            : item.product.price;
+        const finalPrice = item.discount
+            ? item.price - item.price * item.discount / 100
+            : item.price;
 
         return acc + finalPrice * item.qtn;
 
     }, 0);
-
+    console.log({ "cart": cart });
     return (
         <div className="bg-[#f1f3f6] min-h-screen">
 
@@ -33,39 +33,39 @@ const Cart = () => {
 
                                 {cart.map((item) => {
 
-                                    const finalPrice = item.product.discount
-                                        ? item.product.price - item.product.price * item.product.discount / 100
-                                        : item.product.price;
+                                    const finalPrice = item.discount
+                                        ? item.price - item.price * item.discount / 100
+                                        : item.price;
 
                                     return (
 
                                         <div
-                                            key={item.product.id}
+                                            key={item.id}
                                             className="flex items-center justify-between border-b border-[#ccc] py-4"
                                         >
 
                                             <div className="flex items-center gap-4 w-1/2">
 
                                                 <img
-                                                    src={item.product.image}
+                                                    src={item.image}
                                                     className="w-10 h-10 sm:w-16 sm:h-16 object-contain border border-[#ccc] rounded-lg p-1"
                                                 />
 
                                                 <span className="text-sm sm:text-md md:text-lg font-semibold text-black">
-                                                    {item.product.title}
+                                                    {item.title}
                                                 </span>
 
                                             </div>
 
                                             <div className="flex items-center gap-2 sm:gap-3 border border-[#ccc] rounded-lg px-2 sm:px-3 py-1">
 
-                                                <Button onClick={() => decreaseQtn(item.product.id)} className="pt-1">
+                                                <Button onClick={() => decreaseQtn(item.id)} className="pt-1">
                                                     <Minus size={16} />
                                                 </Button>
 
                                                 <span className="text-md font-semibold">{item.qtn}</span>
 
-                                                <Button onClick={() => increaseQtn(item.product.id)} className="pt-1">
+                                                <Button onClick={() => increaseQtn(item.id)} className="pt-1">
                                                     <Plus size={16} />
                                                 </Button>
 
@@ -78,7 +78,7 @@ const Cart = () => {
                                                 </span>
 
                                                 <button
-                                                    onClick={() => removeItem(item.product.id)}
+                                                    onClick={() => removeItem(item.id)}
                                                     className="text-sm text-red-500 hover:text-red-600"
                                                 >
                                                     Remove

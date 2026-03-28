@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import ProductCard from "../components/ProductCard";
+import { getProductsBySlug } from "../api/api"
 
 const ProductPage = () => {
     const { slug } = useParams();
@@ -10,8 +11,7 @@ const ProductPage = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch(`https://flipkart-server-kohl.vercel.app/api/products?subSlug=${slug}`);
-                const data = await res.json();
+                const data = await getProductsBySlug(slug);
                 setProducts(data);
             }
             catch (err) {

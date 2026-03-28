@@ -5,8 +5,11 @@ import data from "../data/categoryData"
 import ProductCard from "../components/ProductCard"
 import { ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
+import { getProducts } from "../api/api"
 
 const Homepage = () => {
+
+
 
     const [mobiles, setMobiles] = useState([]);
     const [watches, setWatches] = useState([]);
@@ -15,15 +18,11 @@ const Homepage = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const [mobilesRes, watchesRes] = await Promise.all([
-                    fetch("https://flipkart-server-kohl.vercel.app/api/products?subcategoryId=1"),
-                    fetch("https://flipkart-server-kohl.vercel.app/api/products?subcategoryId=2")
+                const [mobilesData, watchesData] = await Promise.all([
+                    getProducts(1),
+                    getProducts(2),
                 ]);
 
-                const [mobilesData, watchesData] = await Promise.all([
-                    mobilesRes.json(),
-                    watchesRes.json()
-                ]);
                 setMobiles(mobilesData);
                 setWatches(watchesData);
                 setLoading(false);
