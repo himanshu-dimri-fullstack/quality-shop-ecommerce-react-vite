@@ -9,18 +9,17 @@ const FooterTop = () => {
                     <ul className='text-white text-sm font-semibold whitespace-nowrap'>
                         <li><a href="#" className='hover:underline'>Contact Us</a></li>
                         <li><a href="#" className='hover:underline'>About Us</a></li>
-                        <li><a href="#" className='hover:underline'>Carrers</a></li>
-                        <li><a href="#" className='hover:underline'>Flipkart stories</a></li>
+                        <li><a href="#" className='hover:underline'>Careers</a></li>
                         <li><a href="#" className='hover:underline'>Press</a></li>
-                        <li><a href="#" className='hover:underline'>Corporate Information</a></li>
                     </ul>
                 </div>
                 <div className='col-span-6 md:col-span-3'>
-                    <h5 className='text-[#878787] text-md py-3'>Group Companies</h5>
+                    <h5 className='text-[#878787] text-md py-3'>Connect</h5>
                     <ul className='text-white text-sm font-semibold'>
-                        <li><a href="#" className='hover:underline'>Myntra</a></li>
-                        <li><a href="#" className='hover:underline'>Cleartrip</a></li>
-                        <li><a href="#" className='hover:underline'>Shopsy</a></li>
+                        <li><a href="#" className='hover:underline'>X</a></li>
+                        <li><a href="#" className='hover:underline'>Instagram</a></li>
+                        <li><a href="#" className='hover:underline'>Facebook</a></li>
+
                     </ul>
                 </div>
                 <div className='col-span-6 md:col-span-3'>
@@ -39,8 +38,6 @@ const FooterTop = () => {
                         <li><a href="#" className='hover:underline'>Terms of Use</a></li>
                         <li><a href="#" className='hover:underline'>Security</a></li>
                         <li><a href="#" className='hover:underline' >Privacy</a></li>
-                        <li><a href="#" className='hover:underline'>Sitemap</a></li>
-                        <li><a href="#" className='hover:underline'>Connect App</a></li>
                     </ul>
                 </div>
             </div>

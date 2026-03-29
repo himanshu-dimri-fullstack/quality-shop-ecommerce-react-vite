@@ -496,14 +496,6 @@
       "password": "123456"
     },
     {
-      "id": "4944",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "body": "{\"name\":\"Himanshu Dimri\",\"email\":\"himanshudimrifullstack11@gmail.com\",\"password\":\"123456\"}"
-    },
-    {
       "id": "17ab",
       "name": "Himanshu Dimri",
       "email": "himanshudimrifullstack11@gmail.com",

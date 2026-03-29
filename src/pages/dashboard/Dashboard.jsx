@@ -17,7 +17,7 @@ const Dashboard = () => {
             <div className="flex gap-2">
 
 
-                <Button onClick={() => navigate("/")} className="border border-[#ffe51f] rounded-lg bg-[#ffe51f] text-sm text-black font-semibold px-6 py-3">Home</Button>
+                <Button onClick={() => navigate("/")} className="border border-[#ff914d] rounded-lg bg-[#ff914d] text-sm text-black font-semibold px-6 py-3">Home</Button>
                 <Button onClick={logoutUser} className="border border-red-600 rounded-lg bg-red-600 text-sm text-black font-semibold px-6 py-3">Logout</Button>
             </div>
         </div>

@@ -47,12 +47,12 @@ const ProductDetailPage = () => {
 
     const finalPrice = product?.discount ? product?.price - product?.price * (product?.discount / 100) : product?.price;
 
-    const isInCart = cart.some((item) => item.id === product?.id);
+    const isInCart = cart.some((item) => item.product.id === product?.id);
 
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen ">
-                <div className="w-10 h-10 border-4 border-gray-300 border-t-[#ffe51f] rounded-full animate-spin"></div>
+                <div className="w-10 h-10 border-4 border-gray-300 border-t-[#ff914d] rounded-full animate-spin"></div>
             </div>
         )
     }
@@ -156,14 +156,17 @@ const ProductDetailPage = () => {
                                     isInCart ?
                                         <Button onClick={() => navigate("/cart")} className="text-md text-black  font-semibold px-4 lg:px-8 py-3 border border-[#707070] rounded-xl bg-white">View Cart</Button>
                                         :
-                                        <Button onClick={() => { addToCart(product) }} className="text-md text-black  font-semibold px-4 lg:px-8 py-3 border border-[#ffe51fff] rounded-xl bg-[#ffe51fff]">Add to Cart</Button>
+                                        <Button onClick={() => { addToCart(product) }} className="text-md text-black  font-semibold px-4 lg:px-8 py-3 border border-[#ff914d] rounded-xl bg-[#ff914d]">Add to Cart</Button>
                                 }
                             </div>
                         </div>
                     </div>
+
+                    {/* Suggested for you  section*/}
+
                     <div className="flex justify-between my-2 md:my-5">
                         <h3 className="text-lg md:text-2xl text-black font-bold">Suggested for you</h3>
-                        <Link to={`/product/${subCat.slug}`} className="py-1 px-3 md:py-2 md:px-6 bg-[#2a55e5] border border-[#eee] rounded-2xl">
+                        <Link to={`/product/${subCat.slug}`} className="py-1 px-3 md:py-2 md:px-6 bg-[#ff914d] border border-[#eee] rounded-2xl">
                             <ArrowRight size={18} className="text-white" />
                         </Link>
                     </div>

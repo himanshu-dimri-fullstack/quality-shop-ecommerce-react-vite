@@ -208,7 +208,7 @@ const CheckoutPage = () => {
                 <button
                     disabled={!isFormValid}
                     onClick={handleSubmit}
-                    className={`mt-6 w-full py-3 text-black ${isFormValid ? "bg-[#ffe51fff]" : "bg-gray-400 cursor-not-allowed"
+                    className={`mt-6 w-full py-3 text-black ${isFormValid ? "bg-[#ff914d]" : "bg-gray-400 cursor-not-allowed"
                         }`}
                 >
                     Place Order

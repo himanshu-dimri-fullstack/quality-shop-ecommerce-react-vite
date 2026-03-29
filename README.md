@@ -1,65 +1,99 @@
-# Flipkart Clone
+# Quality Shop E-Commerce
 
-A React (Vite) eCommerce web application with a JSON-based mock backend deployed on Vercel.
+A React (Vite) eCommerce web application with a **local JSON Server (mock backend)**.
 
 ---
 
 ## Features
 
-- Built a responsive UI using React (Vite) and Tailwind CSS
-- Developed and consumed RESTful APIs using a JSON-based backend (deployed on Vercel)
-- Implemented dynamic product detail pages with React Router params and API-driven data
-- Created Add to Cart functionality using React Context API for global state management
-- Implemented user authentication (Login/Signup) using Context API (temporary/mock, since backend is read-only)
-- Fetched and rendered product data from deployed backend APIs 
+* Built a responsive UI using React (Vite) and Tailwind CSS
+* Used JSON Server as a mock backend for creating RESTful APIs
+* Implemented dynamic product detail pages using React Router params
+* Created Add to Cart functionality using React Context API
+* Implemented basic user authentication (mock) using Context API
+* Fetched and managed product data from local API
 
 ---
 
 ## Tech Stack
 
-## Frontend
-- React.js (Vite)  
-- Tailwind CSS   
+### Frontend
 
-## Backend (Mock)
-- JSON files (db.json) + API routes deployed on Vercel
-- Powered by a mock backend structure (read-only for GET requests)
+* React.js (Vite)
+* Tailwind CSS
 
----
+### Backend (Mock - Local)
 
-## Live Demo
-
-👉 https://flipkart-clone-in-react-vite.vercel.app  
-
----
-
-## Repository
-
-👉 https://github.com/himanshu-dimri-fullstack/flipkart-clone-in-react  
+* JSON Server (`json-server`)
+* db.json (local database)
 
 ---
 
 ## Installation & Setup
 
+### 1️⃣ Clone the repo
+
 ```bash
-git clone https://github.com/himanshu-dimri-fullstack/flipkart-clone-in-react
-cd flipkart-clone-in-react
+git clone https://github.com/himanshu-dimri-fullstack/quality-shop-ecommerce-react-vite
+cd /quality-shop-ecommerce-react-vite
+```
+
+### 2️⃣ Install dependencies
+
+```bash
 npm install
+```
+
+### 3️⃣ Run JSON Server (Mock Backend)
+
+```bash
+npx json-server --watch db.json --port 3000
+```
+
+👉 API will run on:
+
+```
+http://localhost:3000
+```
+
+---
+
+### 4️⃣ Run Frontend
+
+```bash
 npm run dev
+```
+
+👉 Frontend will run on:
+
+```
+http://localhost:5173
+```
+
+---
+
+## API Example
+
+* Get all products:
+
+```
+GET http://localhost:3000/products
 ```
 
 ---
 
 ## Note
 
-This project uses JSON-based mock backend. It does not include a real production backend.
+* This project uses a **local mock backend (JSON Server)**
+* No real database or authentication system is used
+* Data is not persistent in production
 
 ---
 
 ## Future Improvements
 
-- Integrate real backend (Node.js + MongoDB)  
-- Add payment gateway  
-- Improve authentication with JWT  
+* Integrate real backend (Node.js + MongoDB)
+* Add authentication using JWT
+* Add payment gateway integration
 
 ---

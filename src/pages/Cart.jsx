@@ -12,9 +12,9 @@ const Cart = () => {
 
     const totalPrice = cart.reduce((acc, item) => {
 
-        const finalPrice = item.discount
-            ? item.price - item.price * item.discount / 100
-            : item.price;
+        const finalPrice = item.product.discount
+            ? item.product.price - item.product.price * item.product.discount / 100
+            : item.product.price;
 
         return acc + finalPrice * item.qtn;
 
@@ -33,39 +33,39 @@ const Cart = () => {
 
                                 {cart.map((item) => {
 
-                                    const finalPrice = item.discount
-                                        ? item.price - item.price * item.discount / 100
-                                        : item.price;
+                                    const finalPrice = item.product.discount
+                                        ? item.product.price - item.product.price * item.product.discount / 100
+                                        : item.product.price;
 
                                     return (
 
                                         <div
-                                            key={item.id}
+                                            key={item.product.id}
                                             className="flex items-center justify-between border-b border-[#ccc] py-4"
                                         >
 
                                             <div className="flex items-center gap-4 w-1/2">
 
                                                 <img
-                                                    src={item.image}
+                                                    src={item.product.image}
                                                     className="w-10 h-10 sm:w-16 sm:h-16 object-contain border border-[#ccc] rounded-lg p-1"
                                                 />
 
                                                 <span className="text-sm sm:text-md md:text-lg font-semibold text-black">
-                                                    {item.title}
+                                                    {item.product.title}
                                                 </span>
 
                                             </div>
 
                                             <div className="flex items-center gap-2 sm:gap-3 border border-[#ccc] rounded-lg px-2 sm:px-3 py-1">
 
-                                                <Button onClick={() => decreaseQtn(item.id)} className="pt-1">
+                                                <Button onClick={() => decreaseQtn(item.product.id)} className="pt-1">
                                                     <Minus size={16} />
                                                 </Button>
 
                                                 <span className="text-md font-semibold">{item.qtn}</span>
 
-                                                <Button onClick={() => increaseQtn(item.id)} className="pt-1">
+                                                <Button onClick={() => increaseQtn(item.product.id)} className="pt-1">
                                                     <Plus size={16} />
                                                 </Button>
 
@@ -78,7 +78,7 @@ const Cart = () => {
                                                 </span>
 
                                                 <button
-                                                    onClick={() => removeItem(item.id)}
+                                                    onClick={() => removeItem(item.product.id)}
                                                     className="text-sm text-red-500 hover:text-red-600"
                                                 >
                                                     Remove
@@ -117,7 +117,7 @@ const Cart = () => {
                                         <span>₹{parseInt(totalPrice)}</span>
                                     </div>
 
-                                    <Button onClick={() => navigate("/checkout")} className="w-full mt-4 text-md bg-[#ffe51f] text-black py-3 rounded-lg font-semibold hover:bg-[#f7dc0a] transition">
+                                    <Button onClick={() => navigate("/checkout")} className="w-full mt-4 text-md bg-[#ff914d] text-black py-3 rounded-lg font-semibold hover:bg-[#f39154] transition">
                                         Proceed to Checkout
                                     </Button>
 
